@@ -82,19 +82,20 @@ let transitionTimer;
 let questionTimer;   
 let timeLeft = 15;
 let startTime;       
+let pendingSubject = "";
 
-// Biến chứa các thẻ HTML (Sẽ được gán giá trị sau khi web tải xong)
 let quizPage, quizHeader, questionText, answerContainer, currentQSpan, totalQSpan, quizSubject, nextTimerMsg, countdownSpan, resultModal, timerDisplay, timeBar, totalTimeDisplay, questionCard;
+let readyModal, readyGoOverlay, readyGoText;
 
 // =============================================================
 // PHẦN 3: KHỞI TẠO DOM KHI WEB TẢI XONG
 // =============================================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Fix lỗi scroll khi F5
+    // 1. Fix lỗi scroll khi F5 (Về đầu trang)
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
 
-    // Gán biến
+    // 2. Gán biến từ HTML
     quizPage = document.getElementById('quizPage');
     quizHeader = document.getElementById('quizHeader');
     questionText = document.getElementById('questionText');
@@ -109,6 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
     timeBar = document.getElementById('timeBar');
     totalTimeDisplay = document.getElementById('totalTimeDisplay');
     questionCard = document.getElementById('questionCard');
+    
+    // Biến cho hiệu ứng Ready/Go
+    readyModal = document.getElementById('readyModal');
+    readyGoOverlay = document.getElementById('readyGoOverlay');
+    readyGoText = document.getElementById('readyGoText');
 
     // Mobile Menu
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -121,27 +127,71 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // =============================================================
-// PHẦN 4: LOGIC BÀI THI
+// PHẦN 4: LOGIC BÀI THI & HIỆU ỨNG
 // =============================================================
 
+// --- 1. KHI ẤN VÀO KHỐI CÂU HỎI -> HIỆN HỎI "SẴN SÀNG" ---
 function openQuiz(type) {
     if (!questionBank[type]) return alert("Đang cập nhật câu hỏi!");
+    
+    pendingSubject = type;
+    
+    // Hiển thị Popup Sẵn Sàng
+    if(readyModal) readyModal.classList.remove('hidden');
+}
 
-    currentQuestions = questionBank[type];
+// --- 2. BẮT ĐẦU CHUỖI HIỆU ỨNG READY -> GO -> LOAD ---
+function startReadyGoSequence() {
+    // Ẩn Popup Sẵn sàng
+    if(readyModal) readyModal.classList.add('hidden');
+
+    // Setup dữ liệu ban đầu
+    currentQuestions = questionBank[pendingSubject];
     currentQuestionIndex = 0;
     scoreCorrect = 0;
     scoreWrong = 0;
     isAnswered = false;
     startTime = new Date(); 
 
-    setupTheme(type);
-    
+    // Setup Giao diện
+    setupTheme(pendingSubject);
     if(totalQSpan) totalQSpan.innerText = currentQuestions.length;
+    
+    // Hiện phòng thi (trống)
     if(quizPage) quizPage.classList.remove('hidden');
     if(resultModal) resultModal.classList.add('hidden');
+    
+    // Xóa trắng câu hỏi
+    if(questionText) questionText.innerText = "";
+    if(answerContainer) answerContainer.innerHTML = "";
 
-    loadQuestion();
+    // Bật Overlay
+    if(readyGoOverlay) readyGoOverlay.classList.remove('hidden');
+
+    // CHẠY HIỆU ỨNG
+    if(readyGoText) {
+        readyGoText.innerText = "READY";
+        readyGoText.className = "text-9xl font-black text-yellow-500 uppercase tracking-tighter drop-shadow-2xl anim-ready-go";
+    }
+
+    setTimeout(() => {
+        if(readyGoText) {
+            readyGoText.innerText = "GO!";
+            readyGoText.classList.remove('anim-ready-go');
+            void readyGoText.offsetWidth; // Trigger reflow
+            readyGoText.classList.add('anim-ready-go');
+            readyGoText.classList.replace('text-yellow-500', 'text-green-500');
+        }
+
+        setTimeout(() => {
+            if(readyGoOverlay) readyGoOverlay.classList.add('hidden');
+            loadQuestion(); // Bắt đầu thi
+        }, 1000);
+
+    }, 1000);
 }
+
+// --- 3. CÁC HÀM XỬ LÝ (LOGIC CHÍNH) ---
 
 function setupTheme(type) {
     if(!quizHeader) return;
@@ -170,6 +220,8 @@ function confirmExit() {
 function closeQuiz() {
     if(quizPage) quizPage.classList.add('hidden');
     if(resultModal) resultModal.classList.add('hidden');
+    if(readyGoOverlay) readyGoOverlay.classList.add('hidden');
+    if(readyModal) readyModal.classList.add('hidden');
     clearInterval(questionTimer);
     clearTimeout(transitionTimer);
     document.body.scrollIntoView({ behavior: 'smooth' });
@@ -178,7 +230,7 @@ function closeQuiz() {
 function loadQuestion() {
     isAnswered = false;
     if(nextTimerMsg) nextTimerMsg.style.opacity = "0"; 
-    // Tắt hiệu ứng nhấp nháy đỏ
+    // Tắt nhấp nháy đỏ khi qua câu mới
     if(questionCard) questionCard.classList.remove('critical-alert');
     
     clearInterval(questionTimer); 
@@ -193,7 +245,6 @@ function loadQuestion() {
         const btn = document.createElement('button');
         btn.className = "answer-btn w-full text-left p-5 rounded-2xl bg-white text-slate-700 font-medium text-lg shadow-sm flex items-center gap-4 relative overflow-hidden group";
         
-        // Fix lỗi hiển thị dấu < >
         const safeAns = ans.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
         btn.innerHTML = `
@@ -261,7 +312,6 @@ function timeOut() {
     correctBtn.classList.add('correct-anim');
     correctBtn.querySelector('div').classList.replace('bg-slate-100', 'bg-green-200');
     
-    // Hiện icon tích xanh
     const icon = correctBtn.querySelector('.status-icon');
     icon.classList.remove('opacity-0', 'scale-50');
     icon.classList.add('opacity-100', 'scale-100', 'text-green-500');
@@ -280,7 +330,6 @@ function checkAnswer(selectedBtn, selectedIndex, correctIndex) {
     if (isAnswered) return;
     isAnswered = true;
     
-    // Tắt nhấp nháy
     if(questionCard) questionCard.classList.remove('critical-alert');
     clearInterval(questionTimer); 
 

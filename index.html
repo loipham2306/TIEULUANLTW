@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- Thêm class scroll-pt-28 -->
-<html lang="vi" class="scroll-pt-28">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +24,7 @@
                 <i class="fa-solid fa-user-graduate text-4xl"></i>
             </div>
             <h2 class="text-2xl font-bold text-slate-800 mb-2">XIN CHÀO!</h2>
-            <p class="text-slate-500 mb-6 text-sm">Bạn đã sẵn sàng chinh phục kiến thức về lập trình chưa?</p>
+            <p class="text-slate-500 mb-6 text-sm">Bạn đã sẵn sàng chinh phục những kiến thức lập trình chưa?</p>
             <button onclick="document.getElementById('loginModal').style.display='none'" 
                     class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl hover:bg-blue-700 transition transform hover:scale-105 shadow-lg shadow-blue-200">
                 Bắt đầu ngay
@@ -34,11 +33,11 @@
     </div>
 
     <!-- === PHẦN 2: HEADER & MENU === -->
-    <header class="bg-blue-600 shadow-md sticky top-0 z-50">
+    <header class="bg-blue-600 shadow-md sticky top-0 z-40">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
-                <nav class="hidden md:flex space-x-6">
-                    <a href="index.html"  class="px-4 py-2 rounded-lg text-yellow-300 bg-blue-800 font-bold shadow-inner">TRANG CHỦ</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-yellow-300 bg-blue-800 font-bold shadow-inner">TRANG CHỦ</a>
                     <a href="tintuc.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">TIN TỨC</a>
                     <a href="diendan.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">DIỄN ĐÀN</a>
                     <a href="gioithieu.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">GIỚI THIỆU</a>
@@ -49,7 +48,7 @@
                 </div>    
             </div>
         </div>
-        <!-- Mobile Menu (Giữ nguyên logic cũ) -->
+        <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="flex flex-col p-4">
                 <a href="#" class="py-2 text-gray-700 font-bold">TRANG CHỦ</a>
@@ -61,37 +60,34 @@
 
     <!-- === HERO SECTION === -->
     <section class="bg-blue-600 text-white min-h-screen flex flex-col justify-center relative overflow-hidden">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-40">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
             <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
                 <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Chinh Phục <br/> <span class="text-yellow-300">Thế Giới Lập Trình</span></h1>
                 <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-lg mx-auto md:mx-0">Rất nhiều câu hỏi trắc nghiệm từ cơ bản đến nâng cao đang chờ bạn khám phá.</p>
-<button onclick="window.scrollTo({ top: document.getElementById('main-content').offsetTop - 150, behavior: 'smooth' });" 
-        class="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 hover:scale-105 transition transform duration-300">
-    <i class="fa-solid fa-play mr-2"></i> Thử Ngay
-</button>
+                <button onclick="window.scrollTo({ top: document.getElementById('main-content').offsetTop - 150, behavior: 'smooth' });" 
+                        class="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 hover:scale-105 transition transform duration-300">
+                    <i class="fa-solid fa-play mr-2"></i> Thử Ngay
+                </button>
             </div>
             <div class="md:w-1/2 flex justify-center">
                 <img src="images/gif1.gif" alt="Coding Banner" class="relative z-10 w-full max-w-lg drop-shadow-2xl rounded-lg">
             </div>
         </div>
         <div class="absolute bottom-0 left-0 w-full leading-[0] z-0">
-        <svg class="relative block w-[calc(100%+1.3px)] h-[80px] transform scale-y-[-1]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-                  class="fill-gray-50"></path>
-        </svg>
-    </div>
+            <svg class="relative block w-[calc(100%+1.3px)] h-[80px] transform scale-y-[-1]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+                      class="fill-gray-50"></path>
+            </svg>
+        </div>
     </section>
 
     <!-- === MAIN CONTENT === -->
-  <main class="flex-grow container mx-auto px-4 pt-16 pb-20 bg-gray-50" id="main-content">
-       <div class="text-center mb-16">
-    <h2 class="text-3xl font-bold text-slate-800 mb-2">Khám Phá Kiến Thức</h2>
-    <!-- Thanh gạch ngang (thêm mb-4 để tạo khoảng cách với dòng chữ dưới) -->
-    <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-4"></div>
-    
-    <!-- Dòng chữ bạn muốn thêm -->
-    <p class="text-slate-500 text-sm italic">Hãy chọn ngôn ngữ để bắt đầu</p>
-</div>
+    <main class="flex-grow container mx-auto px-4 pt-16 pb-20 bg-gray-50" id="main-content">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Khám Phá Kiến Thức</h2>
+            <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-4"></div>
+            <p class="text-slate-500 text-sm italic">Hãy chọn ngôn ngữ để bắt đầu</p>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Web -->
@@ -135,18 +131,14 @@
         </div>
     </main>
 
-    <!-- === GIAO DIỆN PHÒNG THI PRO (FULL SCREEN) - ĐÃ THAY ĐỔI === -->
+    <!-- === GIAO DIỆN PHÒNG THI PRO (FULL SCREEN) === -->
     <div id="quizPage" class="hidden fixed inset-0 bg-slate-50 z-50 flex flex-col h-screen overflow-hidden">
-        
         <!-- Header: Đổi màu theo môn -->
         <header id="quizHeader" class="bg-white shadow-md px-6 py-4 flex justify-between items-center z-20 transition-colors duration-500">
             <button onclick="confirmExit()" class="text-white/90 hover:text-white transition flex items-center gap-2 bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm">
                 <i class="fa-solid fa-arrow-left"></i> <span class="hidden md:inline font-bold">Thoát</span>
             </button>
-            
             <h2 id="quizSubject" class="text-xl md:text-2xl font-black text-white tracking-wide uppercase drop-shadow-md">Chủ đề thi</h2>
-            
-            <!-- Đồng hồ & Số câu -->
             <div class="flex items-center gap-4">
                 <div class="flex flex-col items-end text-white">
                     <span class="text-xs opacity-90 font-bold uppercase">Thời gian</span>
@@ -159,7 +151,7 @@
             </div>
         </header>
 
-        <!-- Thanh thời gian chạy -->
+        <!-- Thanh thời gian -->
         <div class="w-full bg-gray-200 h-2">
             <div id="timeBar" class="bg-yellow-400 h-2 transition-all duration-1000 linear" style="width: 100%"></div>
         </div>
@@ -167,18 +159,17 @@
         <!-- Nội dung câu hỏi -->
         <main class="flex-grow container mx-auto px-4 flex flex-col items-center justify-center relative overflow-y-auto py-8">
             <div class="w-full max-w-3xl">
-                <!-- Card Câu hỏi -->
+                <!-- Card Câu hỏi (Đã thêm ID="questionCard") -->
                 <div id="questionCard" class="bg-white rounded-3xl shadow-xl p-8 md:p-10 mb-8 relative overflow-hidden transform transition-all">
-                    <!-- Bong bóng trang trí -->
                     <div class="absolute -top-6 -right-6 w-24 h-24 bg-gray-100 rounded-full opacity-50"></div>
                     <h3 id="questionText" class="text-2xl md:text-3xl font-bold text-slate-800 leading-normal relative z-10">
                         Đang tải dữ liệu...
                     </h3>
                 </div>
 
-                <!-- Các nút đáp án (Grid 2 cột) -->
+                <!-- Các nút đáp án -->
                 <div id="answerContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Javascript chèn nút vào đây -->
+                    <!-- JS sẽ chèn nút vào đây -->
                 </div>
 
                 <!-- Thông báo chuyển câu -->
@@ -191,7 +182,7 @@
         </main>
     </div>
 
-    <!-- === POPUP KẾT QUẢ (MỚI) === -->
+    <!-- === POPUP KẾT QUẢ === -->
     <div id="resultModal" class="hidden fixed inset-0 bg-slate-900/95 flex items-center justify-center z-[60] backdrop-blur-sm p-4">
         <div class="bg-white rounded-[2rem] p-8 text-center max-w-md w-full shadow-2xl modal-animate relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-blue-50 to-transparent"></div>
@@ -201,7 +192,6 @@
                 </div>
                 <h2 class="text-3xl font-black text-slate-800 mb-2">Tuyệt Vời!</h2>
                 <p class="text-slate-500 mb-8">Bạn đã hoàn thành bài QUIZ</p>
-                
                 <div class="grid grid-cols-2 gap-4 mb-6">
                     <div class="bg-green-50 p-4 rounded-2xl border border-green-100">
                         <p class="text-green-600 text-xs font-bold uppercase tracking-wider mb-1">Đúng</p>
@@ -212,11 +202,9 @@
                         <p class="text-4xl font-black text-red-500" id="wrongScore">0</p>
                     </div>
                 </div>
-
                 <div class="bg-slate-50 p-3 rounded-xl mb-8 flex justify-center items-center gap-2 text-slate-600 text-sm font-medium border border-slate-100">
                     <i class="fa-regular fa-clock"></i> Tổng thời gian: <span id="totalTimeDisplay" class="text-slate-900 font-bold">00:00</span>
                 </div>
-
                 <div class="flex gap-3">
                     <button onclick="closeQuiz()" class="flex-1 border-2 border-slate-200 text-slate-600 py-3 rounded-xl font-bold hover:bg-slate-50 transition">Thoát</button>
                 </div>
@@ -224,10 +212,35 @@
         </div>
     </div>
 
+    <!-- === MỚI THÊM: POPUP SẴN SÀNG === -->
+    <div id="readyModal" class="hidden fixed inset-0 bg-slate-900/90 z-[70] flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl modal-animate border-4 border-white/10">
+            <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
+                <i class="fa-solid fa-bolt text-4xl text-yellow-500"></i>
+            </div>
+            <h2 class="text-2xl font-black text-slate-800 mb-2">Bạn Đã Sẵn Sàng?</h2>
+            <p class="text-slate-500 mb-8">Bài thi gồm 20 câu. Bạn có 15s cho mỗi câu hỏi. Hãy tập trung cao độ!</p>
+            
+            <div class="flex gap-3">
+                <button onclick="document.getElementById('readyModal').classList.add('hidden')" class="flex-1 py-3 rounded-xl font-bold text-slate-500 hover:bg-slate-100 transition">Hủy</button>
+                <button onclick="startReadyGoSequence()" class="flex-1 bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 shadow-lg shadow-blue-200 transition transform hover:scale-105">
+                    Sẵn Sàng!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === MỚI THÊM: MÀN HÌNH READY/GO === -->
+    <div id="readyGoOverlay" class="hidden fixed inset-0 z-[80] bg-white/95 flex items-center justify-center">
+        <h1 id="readyGoText" class="text-9xl font-black text-slate-800 uppercase tracking-tighter drop-shadow-2xl">
+            READY
+        </h1>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-slate-900 text-white py-8 mt-12">
         <div class="container mx-auto px-4 text-center">
-              <p class="text-slate-400 text-sm">&copy; 2025 QUIZ. Designed by Pham Huu Loi.</p>
+            <p class="text-slate-400 text-sm">&copy; 2025 QUIZ. Designed by Pham Huu Loi.</p>
         </div>
     </footer>
 
