@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Tức - QUIZ</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Dùng chung file CSS với trang chủ để đồng bộ hiệu ứng -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col font-sans text-slate-800">
+
+    <!-- === HEADER (Giống trang chủ) === -->
+    <header class="bg-blue-600 shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Menu Desktop -->
+                <nav class="hidden md:flex space-x-6">
+                    <!-- Link về trang chủ (Bình thường) -->
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">TRANG CHỦ</a>
+                    
+                    <!-- Link Tin Tức (ĐANG ACTIVE -> Chữ Vàng, Nền Đậm) -->
+                    <a href="tintuc.html" class="px-4 py-2 rounded-lg text-yellow-300 bg-blue-800 font-bold shadow-inner">TIN TỨC</a>
+                    
+                    <a href="diendan.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">DIỄN ĐÀN</a>
+                    <a href="gioithieu.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">GIỚI THIỆU</a>
+                </nav>
+                
+                <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+                
+                <div class="flex items-center space-x-2">
+                    <h1 class="text-3xl font-extrabold text-yellow-300 tracking-wider drop-shadow-md">QUIZ LẬP TRÌNH</h1>
+                </div>    
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-blue-700 absolute w-full left-0 z-50 shadow-lg">
+            <div class="flex flex-col p-4 space-y-2">
+                <a href="index.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">TRANG CHỦ</a>
+                <a href="tintuc.html" class="block py-2 px-4 text-blue-700 font-bold bg-blue-50 rounded-lg">TIN TỨC</a>
+                <a href="diendan.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">DIỄN ĐÀN</a>
+                <a href="gioithieu.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">GIỚI THIỆU</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- === NỘI DUNG CHÍNH (TIN TỨC) === -->
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-4xl">
+        
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Bảng Tin</h2>
+            <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- DANH SÁCH TIN (Dạng thẻ chữ nhật dài) -->
+        <div class="space-y-6">
+
+            <!-- 1. Tin Thông Báo (Click hiện Popup) -->
+            <div onclick="document.getElementById('updateModal').classList.remove('hidden')" 
+                 class="group bg-white p-6 rounded-xl shadow-md border-l-8 border-red-500 hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-6">
+                <!-- Icon -->
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-bullhorn text-2xl text-red-600"></i>
+                </div>
+                <!-- Nội dung -->
+                <div class="flex-grow">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded uppercase">Thông báo mới</span>
+                        <span class="text-slate-400 text-xs"><i class="fa-regular fa-clock"></i> Vừa xong</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition">Update Ngôn Ngữ Mới</h3>
+                    <p class="text-slate-500 text-sm mt-1">Thông báo quan trọng về lộ trình cập nhật các môn học tiếp theo...</p>
+                </div>
+                <div class="text-slate-300 group-hover:text-blue-600 transition"><i class="fa-solid fa-chevron-right text-xl"></i></div>
+            </div>
+
+            <!-- 2. Tài liệu HTML (Link W3Schools) -->
+            <a href="https://www.w3schools.com/html/" target="_blank" 
+               class="group bg-white p-6 rounded-xl shadow-md border-l-8 border-orange-500 hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-6 block">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition">
+                    <img src="images/html.jpg" class="w-8 h-8 object-contain">
+                </div>
+                <div class="flex-grow">
+                    <div class="mb-1"><span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded uppercase">Tài Liệu Ôn Tập</span></div>
+                    <h3 class="text-xl font-bold text-slate-800 group-hover:text-orange-600 transition">Ôn tập HTML5 Cơ bản & Nâng cao</h3>
+                    <p class="text-slate-500 text-sm mt-1">Truy cập tài liệu chính thức từ W3Schools.</p>
+                </div>
+                <div class="text-slate-300 group-hover:text-orange-600 transition"><i class="fa-solid fa-external-link-alt text-xl"></i></div>
+            </a>
+
+            <!-- 3. Tài liệu C++ (Link W3Schools) -->
+            <a href="https://www.w3schools.com/cpp/" target="_blank" 
+               class="group bg-white p-6 rounded-xl shadow-md border-l-8 border-blue-600 hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-6 block">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition">
+                    <img src="images/cpp.jpg" class="w-8 h-8 object-contain">
+                </div>
+                <div class="flex-grow">
+                    <div class="mb-1"><span class="bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded uppercase">Tài Liệu Ôn Tập</span></div>
+                    <h3 class="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition">Cấu trúc dữ liệu & Giải thuật C++</h3>
+                    <p class="text-slate-500 text-sm mt-1">Truy cập tài liệu chính thức từ W3Schools.</p>
+                </div>
+                <div class="text-slate-300 group-hover:text-blue-600 transition"><i class="fa-solid fa-external-link-alt text-xl"></i></div>
+            </a>
+
+            <!-- 4. Tài liệu Java (Link W3Schools) -->
+            <a href="https://www.w3schools.com/java/" target="_blank" 
+               class="group bg-white p-6 rounded-xl shadow-md border-l-8 border-red-600 hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-6 block">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition">
+                    <img src="images/jv.jpg" class="w-8 h-8 object-contain">
+                </div>
+                <div class="flex-grow">
+                    <div class="mb-1"><span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded uppercase">Tài Liệu Ôn Tập</span></div>
+                    <h3 class="text-xl font-bold text-slate-800 group-hover:text-red-600 transition">Lập trình hướng đối tượng Java</h3>
+                    <p class="text-slate-500 text-sm mt-1">Truy cập tài liệu chính thức từ W3Schools.</p>
+                </div>
+                <div class="text-slate-300 group-hover:text-red-600 transition"><i class="fa-solid fa-external-link-alt text-xl"></i></div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- === POPUP THÔNG BÁO UPDATE === -->
+    <div id="updateModal" class="hidden fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm modal-animate">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full shadow-2xl relative text-center">
+            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fa-solid fa-code-branch text-4xl text-blue-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">Big Update Sắp Tới!</h3>
+            <p class="text-slate-500 mb-6">
+                Chúng tôi đang chuẩn bị cập nhật thêm ngân hàng câu hỏi cho ngôn ngữ: <br/>
+                <span class="font-bold text-blue-600">Python</span> và <span class="font-bold text-purple-600">C# (.NET)</span>.
+            </p>
+			<p class="text-slate-400 text-xs italic mb-6">
+					(Dự kiến ra mắt: 01/01/2026)
+			</p>
+            <button onclick="document.getElementById('updateModal').classList.add('hidden')" 
+                    class="w-full bg-slate-800 text-white font-bold py-3 rounded-xl hover:bg-slate-700 transition">
+                Đã hiểu
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+  <p class="text-slate-400 text-sm">&copy; 2025 QUIZ. Designed by Pham Huu Loi.</p>        </div>
+    </footer>
+
+    <!-- Script nhỏ cho menu mobile (Không cần file script.js nặng nề của trang chủ) -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

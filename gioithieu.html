@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu - QUIZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hiệu ứng nền gradient động */
+        .bg-animated {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-800">
+
+    <!-- === HEADER === -->
+    <header class="bg-blue-600 shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">TRANG CHỦ</a>
+                    <a href="tintuc.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">TIN TỨC</a>
+                    <a href="diendan.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">DIỄN ĐÀN</a>
+                    <!-- Menu Đang Chọn (Active) -->
+                    <a href="gioithieu.html" class="px-4 py-2 rounded-lg text-yellow-300 bg-blue-800 font-bold shadow-inner">GIỚI THIỆU</a>
+                </nav>
+                
+                <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none"><i class="fa-solid fa-bars text-2xl"></i></button>
+                
+                <div class="flex items-center space-x-2">
+                    <h1 class="text-3xl font-extrabold text-yellow-300 tracking-wider">QUIZ LẬP TRÌNH</h1>
+                </div>    
+            </div>
+        </div>
+        <!-- Mobile Menu (Ẩn) -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4">
+            <a href="index.html" class="block py-2 text-gray-600">Trang chủ</a>
+            <a href="gioithieu.html" class="block py-2 text-blue-600 font-bold">Giới thiệu</a>
+        </div>
+    </header>
+
+    <!-- === HERO SECTION: ADMIN INFO === -->
+    <section class="bg-white py-16 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Avatar / Ảnh đại diện -->
+                <div class="md:w-1/3 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative w-64 h-64 bg-white rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                            <!-- Bạn có thể thay bằng ảnh thật của bạn -->
+                            <img src="images/avt.jpg" 
+                                 alt="Phạm Hữu Lợi" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thông tin giới thiệu -->
+                <div class="md:w-2/3 text-center md:text-left">
+                    <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wider mb-2">Admin & Developer</span>
+                    <h1 class="text-4xl md:text-5xl font-black text-slate-800 mb-4">
+                        Xin chào, mình là <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Phạm Hữu Lợi</span>
+                    </h1>
+                    <p class="text-xl text-slate-600 font-light mb-6">
+                        Sinh viên trường <b class="text-blue-700">Đại học Văn Hiến (VHU)</b>.
+                    </p>
+                    <p class="text-slate-500 leading-relaxed mb-8 max-w-2xl">
+                        "Mình tạo ra trang web này với mong muốn biến việc học lập trình trở nên thú vị hơn. Code không khô khan, chỉ là cách chúng ta tiếp cận nó chưa đủ hấp dẫn mà thôi."
+                    </p>
+                    
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="diendan.html" class="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-700 transition shadow-lg">
+                            <i class="fa-solid fa-envelope mr-2"></i> Góp ý cho Lợi
+                        </a>
+                        <a href="https://www.facebook.com/fhlshann" target="_blank" class="px-6 py-3 border-2 border-slate-200 text-slate-700 rounded-xl font-bold hover:bg-blue-50 hover:text-blue-600 transition">
+                            <i class="fa-brands fa-facebook"></i> Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SỨ MỆNH & GIÁ TRỊ === -->
+    <main class="flex-grow container mx-auto px-4 py-16">
+        
+        <!-- Ý tưởng phát triển -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">Tại sao QUIZ LẬP TRÌNH ra đời?</h2>
+            <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-8"></div>
+            <p class="text-slate-500 max-w-3xl mx-auto text-lg">
+                Là một sinh viên IT, mình hiểu cảm giác "ngán ngẩm" khi phải đọc hàng trăm trang tài liệu hay xem những video dài lê thê mà không đọng lại được gì. QUIZ PRO là giải pháp giúp bạn:
+            </p>
+        </div>
+
+        <!-- So sánh: Cổ điển vs Hiện đại -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            <!-- Cách học cũ -->
+            <div class="bg-gray-100 p-8 rounded-2xl border border-gray-200 opacity-70 hover:opacity-100 transition">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 text-xl">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-700">Phương pháp Cổ Điển</h3>
+                </div>
+                <ul class="space-y-3 text-gray-600">
+                    <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i> Đọc sách lý thuyết dày cộp, khó nhớ.</li>
+                    <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i> Xem video thụ động, dễ buồn ngủ.</li>
+                    <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i> Học xong không biết mình hổng kiến thức chỗ nào.</li>
+                    <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i> Cảm giác học một mình, nhàm chán.</li>
+                </ul>
+            </div>
+
+            <!-- Cách học mới (QUIZ PRO) -->
+            <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-blue-500 transform hover:-translate-y-2 transition duration-300">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-xl">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-800">Phương pháp QUIZ LẬP TRÌNH</h3>
+                </div>
+                <ul class="space-y-3 text-slate-700">
+                    <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <b>Học qua Trắc nghiệm:</b> Nhanh, gọn, thực tế.</li>
+                    <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <b>Phản hồi tức thì:</b> Biết ngay đúng sai để sửa lỗi.</li>
+                    <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <b>Áp lực thời gian:</b> Rèn luyện tư duy phản xạ nhanh.</li>
+                    <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <b>Luôn cập nhật:</b> Admin luôn lắng nghe để cải tiến web.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Lời hứa từ Admin -->
+        <div class="bg-animated rounded-3xl p-10 text-center text-white shadow-2xl">
+            <h3 class="text-3xl font-black mb-4"><i class="fa-solid fa-heart"></i> Cam Kết Từ Admin</h3>
+            <p class="text-lg opacity-90 max-w-2xl mx-auto mb-8">
+                "Website này không chỉ là một bài tập lớn, mà là tâm huyết của mình. Mình sẽ luôn lắng nghe mọi góp ý của các bạn tại trang Diễn Đàn để nâng cấp thêm nhiều tính năng và ngôn ngữ mới."
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 font-bold">#HTML5</span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 font-bold">#CSS3</span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 font-bold">#Javascript</span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 font-bold">#TailwindCSS</span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm">&copy; 2025 QUIZ. Designed by Pham Huu Loi.</p>
+        </div>
+    </footer>
+
+    <!-- Script Menu Mobile -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if(mobileMenuBtn){
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
