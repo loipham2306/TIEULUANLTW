@@ -9,40 +9,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col font-sans text-slate-800">
-
-    <!-- === HEADER (Chỉ chứa Menu) === -->
     <header class="bg-blue-600 shadow-md sticky top-0 z-40">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
+                
+                <!-- Desktop Menu -->
                 <nav class="hidden md:flex space-x-6">
                     <a href="index.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">TRANG CHỦ</a>
                     <a href="tintuc.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">TIN TỨC</a>
                     <a href="diendan.html" class="px-4 py-2 rounded-lg text-yellow-300 bg-blue-800 font-bold shadow-inner">DIỄN ĐÀN</a>
                     <a href="gioithieu.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">GIỚI THIỆU</a>
                 </nav>
-                <button class="md:hidden text-white"><i class="fa-solid fa-bars text-2xl"></i></button>
+
+                <button id="btnMenuMobile" class="md:hidden text-white focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+                
                 <div class="flex items-center space-x-2">
                     <h1 class="text-3xl font-extrabold text-yellow-300 tracking-wider drop-shadow-md">QUIZ LẬP TRÌNH</h1>
                 </div>    
             </div>
         </div>
-    </header>
 
-    <!-- === NỘI DUNG CHÍNH === -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-blue-700 absolute w-full left-0 z-50 shadow-lg transition-all duration-300">
+            <div class="flex flex-col p-4 space-y-2">
+                <a href="index.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">TRANG CHỦ</a>
+                <a href="tintuc.html"  class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">TIN TỨC</a>
+                <a href="diendan.html" class="block py-2 px-4 text-blue-700 font-bold bg-blue-50 rounded-lg">DIỄN ĐÀN</a>
+                <a href="gioithieu.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">GIỚI THIỆU</a>
+            </div>
+        </div>
+    </header>
     <main class="flex-grow container mx-auto px-4 py-12 max-w-4xl">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-slate-800">Góc Thảo Luận</h2>
             <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mt-2"></div>
         </div>
 
-        <!-- === KHUVỰC 1: ĐĂNG NHẬP / ĐĂNG KÝ (Nằm trong trang) === -->
         <div id="forumAuth" class="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-600 mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <!-- Javascript sẽ điền nội dung vào đây -->
-            <!-- Nếu chưa đăng nhập: Hiện nút Đăng nhập / Đăng ký -->
-            <!-- Nếu đã đăng nhập: Hiện Xin chào + Nút Đăng xuất -->
+        
         </div>
 
-        <!-- === KHUVỰC 2: BÌNH LUẬN / GÓP Ý (Nằm bên dưới) === -->
+ 
         <div class="bg-white p-6 rounded-xl shadow-md">
             <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-100">
                 <h3 class="text-xl font-bold text-slate-700"><i class="fa-regular fa-comments mr-2"></i>Các ý kiến đóng góp</h3>
@@ -51,7 +59,7 @@
                 </button>
             </div>
 
-            <!-- Form Nhập (Ẩn) -->
+
             <div id="commentForm" class="hidden mb-8 bg-slate-50 p-4 rounded-xl border border-slate-200">
                 <label class="block text-sm font-bold text-slate-600 mb-2">Nội dung góp ý:</label>
                 <textarea id="commentContent" class="w-full p-3 border rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white" rows="3" placeholder="Chia sẻ ý kiến của bạn..."></textarea>
@@ -61,14 +69,13 @@
                 </div>
             </div>
 
-            <!-- Danh sách Bình Luận -->
+     
             <div id="commentList" class="space-y-4">
-                <!-- JS sẽ chèn bình luận vào đây -->
+           
             </div>
         </div>
     </main>
 
-    <!-- === POPUP ĐĂNG NHẬP === -->
     <div id="loginModal" class="hidden fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-2xl p-8 max-w-sm w-full modal-animate relative">
             <button onclick="closeModal('loginModal')" class="absolute top-4 right-4 text-gray-400 hover:text-red-500"><i class="fa-solid fa-times text-xl"></i></button>
@@ -83,7 +90,7 @@
         </div>
     </div>
 
-    <!-- === POPUP ĐĂNG KÝ === -->
+
     <div id="registerModal" class="hidden fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-2xl p-8 max-w-sm w-full modal-animate relative">
             <button onclick="closeModal('registerModal')" class="absolute top-4 right-4 text-gray-400 hover:text-red-500"><i class="fa-solid fa-times text-xl"></i></button>
@@ -109,24 +116,24 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT XỬ LÝ -->
+ 
     <script>
-        // 1. DATA (Lưu vào LocalStorage của trình duyệt)
+      
         let users = JSON.parse(localStorage.getItem('users')) || [];
         let comments = JSON.parse(localStorage.getItem('comments')) || [];
         let currentUser = localStorage.getItem('currentUser');
 
-        // 2. MODAL FUNC
+    
         function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
         function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
         function switchModal(closeId, openId) { closeModal(closeId); openModal(openId); }
 
-        // 3. RENDER TRẠNG THÁI ĐĂNG NHẬP (Vào khu vực #forumAuth)
+   
         function checkLoginState() {
             const authDiv = document.getElementById('forumAuth');
             
             if (currentUser) {
-                // ĐÃ ĐĂNG NHẬP -> Hiện tên + Nút đăng xuất
+            
                 authDiv.innerHTML = `
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl">
@@ -142,7 +149,7 @@
                     </button>
                 `;
             } else {
-                // CHƯA ĐĂNG NHẬP -> Hiện nút Đăng nhập/Đăng ký
+              
                 authDiv.innerHTML = `
                     <div class="text-gray-600">
                         <p class="font-bold text-lg">Bạn chưa đăng nhập?</p>
@@ -156,7 +163,7 @@
             }
         }
 
-        // 4. XỬ LÝ ĐĂNG KÝ (Validate Mật khẩu khó)
+
         function handleRegister() {
             const u = document.getElementById('regUser').value.trim();
             const p = document.getElementById('regPass').value;
@@ -164,7 +171,6 @@
             if (!u || !p) return alert("Vui lòng nhập đầy đủ!");
             if (users.find(user => user.username === u)) return alert("Tên đăng nhập đã tồn tại!");
 
-            // Regex: Chữ hoa, thường, số, ký tự đặc biệt, không dấu/cách, 6-20 ký tự
             const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/;
 
             if (!passRegex.test(p)) {
@@ -177,12 +183,12 @@
             alert("Đăng ký thành công! Hãy đăng nhập.");
             switchModal('registerModal', 'loginModal');
             
-            // Reset form
+  
             document.getElementById('regUser').value = "";
             document.getElementById('regPass').value = "";
         }
 
-        // 5. XỬ LÝ ĐĂNG NHẬP
+
         function handleLogin() {
             const u = document.getElementById('loginUser').value.trim();
             const p = document.getElementById('loginPass').value;
@@ -192,14 +198,13 @@
                 currentUser = u;
                 localStorage.setItem('currentUser', u);
                 checkLoginState();
-                closeModal('loginModal');
-                // alert("Chào mừng trở lại, " + u + "!");
+
             } else {
                 alert("Sai tên đăng nhập hoặc mật khẩu!");
             }
         }
 
-        // 6. ĐĂNG XUẤT
+
         function handleLogout() {
             if(confirm("Bạn có chắc muốn đăng xuất?")) {
                 currentUser = null;
@@ -208,7 +213,7 @@
             }
         }
 
-        // 7. XỬ LÝ GÓP Ý
+ 
         function toggleCommentForm() {
             if (!currentUser) return alert("Vui lòng đăng nhập để viết góp ý!");
             document.getElementById('commentForm').classList.remove('hidden');
@@ -252,8 +257,16 @@
                 </div>
             `).join('');
         }
-
-        // KHỞI CHẠY
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('btnMenuMobile');
+            const menu = document.getElementById('mobileMenu');
+            
+            if (btn && menu) {
+                btn.addEventListener('click', function() {
+                    menu.classList.toggle('hidden');
+                });
+            }
+        });
         checkLoginState();
         renderComments();
     </script>

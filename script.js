@@ -1,6 +1,4 @@
-// =============================================================
-// PHẦN 1: NGÂN HÀNG CÂU HỎI (60 CÂU/MÔN)
-// =============================================================
+
 const questionBank = {
     web: [
         { q: "HTML là viết tắt của từ gì?", a: ["HyperText Markup Language", "HighText Machine Language", "HyperText Marking Language", "HyperText Machine Language"], correct: 0 },
@@ -70,9 +68,7 @@ const questionBank = {
     ]
 };
 
-// =============================================================
-// PHẦN 2: KHAI BÁO BIẾN (TOÀN CỤC)
-// =============================================================
+
 let currentQuestions = [];
 let currentQuestionIndex = 0;
 let scoreCorrect = 0;
@@ -87,15 +83,12 @@ let pendingSubject = "";
 let quizPage, quizHeader, questionText, answerContainer, currentQSpan, totalQSpan, quizSubject, nextTimerMsg, countdownSpan, resultModal, timerDisplay, timeBar, totalTimeDisplay, questionCard;
 let readyModal, readyGoOverlay, readyGoText;
 
-// =============================================================
-// PHẦN 3: KHỞI TẠO DOM KHI WEB TẢI XONG
-// =============================================================
+
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Fix lỗi scroll khi F5 (Về đầu trang)
+
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
 
-    // 2. Gán biến từ HTML
     quizPage = document.getElementById('quizPage');
     quizHeader = document.getElementById('quizHeader');
     questionText = document.getElementById('questionText');
@@ -111,12 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
     totalTimeDisplay = document.getElementById('totalTimeDisplay');
     questionCard = document.getElementById('questionCard');
     
-    // Biến cho hiệu ứng Ready/Go
+
     readyModal = document.getElementById('readyModal');
     readyGoOverlay = document.getElementById('readyGoOverlay');
     readyGoText = document.getElementById('readyGoText');
 
-    // Mobile Menu
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenuBtn) {
@@ -126,26 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// =============================================================
-// PHẦN 4: LOGIC BÀI THI & HIỆU ỨNG
-// =============================================================
 
-// --- 1. KHI ẤN VÀO KHỐI CÂU HỎI -> HIỆN HỎI "SẴN SÀNG" ---
 function openQuiz(type) {
     if (!questionBank[type]) return alert("Đang cập nhật câu hỏi!");
     
     pendingSubject = type;
     
-    // Hiển thị Popup Sẵn Sàng
+ 
     if(readyModal) readyModal.classList.remove('hidden');
 }
 
-// --- 2. BẮT ĐẦU CHUỖI HIỆU ỨNG READY -> GO -> LOAD ---
+
 function startReadyGoSequence() {
-    // Ẩn Popup Sẵn sàng
+
     if(readyModal) readyModal.classList.add('hidden');
 
-    // Setup dữ liệu ban đầu
+
     currentQuestions = questionBank[pendingSubject];
     currentQuestionIndex = 0;
     scoreCorrect = 0;
@@ -153,22 +141,21 @@ function startReadyGoSequence() {
     isAnswered = false;
     startTime = new Date(); 
 
-    // Setup Giao diện
+
     setupTheme(pendingSubject);
     if(totalQSpan) totalQSpan.innerText = currentQuestions.length;
-    
-    // Hiện phòng thi (trống)
+ 
     if(quizPage) quizPage.classList.remove('hidden');
     if(resultModal) resultModal.classList.add('hidden');
     
-    // Xóa trắng câu hỏi
+
     if(questionText) questionText.innerText = "";
     if(answerContainer) answerContainer.innerHTML = "";
 
-    // Bật Overlay
+
     if(readyGoOverlay) readyGoOverlay.classList.remove('hidden');
 
-    // CHẠY HIỆU ỨNG
+
     if(readyGoText) {
         readyGoText.innerText = "READY";
         readyGoText.className = "text-9xl font-black text-yellow-500 uppercase tracking-tighter drop-shadow-2xl anim-ready-go";
@@ -178,20 +165,20 @@ function startReadyGoSequence() {
         if(readyGoText) {
             readyGoText.innerText = "GO!";
             readyGoText.classList.remove('anim-ready-go');
-            void readyGoText.offsetWidth; // Trigger reflow
+            void readyGoText.offsetWidth; 
             readyGoText.classList.add('anim-ready-go');
             readyGoText.classList.replace('text-yellow-500', 'text-green-500');
         }
 
         setTimeout(() => {
             if(readyGoOverlay) readyGoOverlay.classList.add('hidden');
-            loadQuestion(); // Bắt đầu thi
+            loadQuestion(); 
         }, 1000);
 
     }, 1000);
 }
 
-// --- 3. CÁC HÀM XỬ LÝ (LOGIC CHÍNH) ---
+
 
 function setupTheme(type) {
     if(!quizHeader) return;
@@ -230,7 +217,7 @@ function closeQuiz() {
 function loadQuestion() {
     isAnswered = false;
     if(nextTimerMsg) nextTimerMsg.style.opacity = "0"; 
-    // Tắt nhấp nháy đỏ khi qua câu mới
+   
     if(questionCard) questionCard.classList.remove('critical-alert');
     
     clearInterval(questionTimer); 
@@ -280,11 +267,11 @@ function startQuestionTimer() {
             const percent = (timeLeft / 15) * 100;
             timeBar.style.width = `${percent}%`;
             
-            // --- 5 GIÂY CUỐI ---
+           
             if (timeLeft <= 5) {
                 timeBar.classList.remove('bg-yellow-400');
                 timeBar.classList.add('bg-red-500');
-                // Bật nhấp nháy đỏ
+             
                 if(questionCard) questionCard.classList.add('critical-alert');
             }
         }
@@ -296,18 +283,18 @@ function startQuestionTimer() {
     }, 1000);
 }
 
-// --- HẾT GIỜ TỰ ĐỘNG TÍNH SAI ---
+
 function timeOut() {
     if (isAnswered) return;
     scoreWrong++; 
     
-    // Tắt nhấp nháy
+ 
     if(questionCard) questionCard.classList.remove('critical-alert');
 
     const correctIndex = currentQuestions[currentQuestionIndex].correct;
     const buttons = answerContainer.children;
     
-    // Hiện đáp án đúng
+  
     const correctBtn = buttons[correctIndex];
     correctBtn.classList.add('correct-anim');
     correctBtn.querySelector('div').classList.replace('bg-slate-100', 'bg-green-200');
@@ -316,7 +303,7 @@ function timeOut() {
     icon.classList.remove('opacity-0', 'scale-50');
     icon.classList.add('opacity-100', 'scale-100', 'text-green-500');
 
-    // Làm mờ các đáp án còn lại
+ 
     Array.from(buttons).forEach(btn => {
         btn.disabled = true;
         btn.classList.add('opacity-50');
@@ -349,7 +336,7 @@ function checkAnswer(selectedBtn, selectedIndex, correctIndex) {
         icon.classList.remove('opacity-0', 'scale-50', 'fa-circle-check');
         icon.classList.add('opacity-100', 'scale-100', 'text-red-500', 'fa-circle-xmark');
         
-        // Hiện đáp án đúng
+ 
         const correctBtn = buttons[correctIndex];
         correctBtn.classList.add('correct-anim');
         correctBtn.querySelector('div').classList.replace('bg-slate-100', 'bg-green-200');

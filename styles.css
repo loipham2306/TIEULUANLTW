@@ -1,14 +1,12 @@
-/* === 1. ANIMATION MODAL === */
 @keyframes slideIn {
     from { transform: translateY(30px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 .modal-animate { animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 
-/* === 2. STYLE NÚT ĐÁP ÁN === */
 .answer-btn {
     transition: all 0.2s ease;
-    border: 2px solid #f1f5f9; /* Màu viền nhạt mặc định */
+    border: 2px solid #f1f5f9; 
 }
 .answer-btn:hover {
     transform: translateY(-3px);
@@ -16,14 +14,12 @@
     border-color: #cbd5e1;
 }
 
-/* === 3. MÀU HEADER THEO MÔN === */
-.theme-web { background: linear-gradient(135deg, #f97316, #ea580c); } /* Cam */
-.theme-cpp { background: linear-gradient(135deg, #2563eb, #1e40af); } /* Xanh */
-.theme-java { background: linear-gradient(135deg, #ef4444, #b91c1c); } /* Đỏ */
 
-/* === 4. HIỆU ỨNG ĐÚNG / SAI === */
+.theme-web { background: linear-gradient(135deg, #f97316, #ea580c); } 
+.theme-cpp { background: linear-gradient(135deg, #2563eb, #1e40af); } 
+.theme-java { background: linear-gradient(135deg, #ef4444, #b91c1c); } 
 
-/* Hiệu ứng ĐÚNG */
+
 @keyframes pulseSuccess {
     0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
     70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
@@ -37,7 +33,7 @@
     animation: pulseSuccess 0.6s;
 }
 
-/* Hiệu ứng SAI */
+
 @keyframes shakeError {
     0%, 100% { transform: translateX(0); }
     20%, 60% { transform: translateX(-5px); }
@@ -51,7 +47,6 @@
     animation: shakeError 0.4s;
 }
 
-/* === 5. HIỆU ỨNG CẢNH BÁO 5S CUỐI === */
 @keyframes criticalFlash {
     0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); border-color: #f1f5f9; }
     50% { box-shadow: 0 0 20px 5px rgba(239, 68, 68, 0.5); border-color: #ef4444; }
@@ -60,11 +55,11 @@
 
 .critical-alert {
     animation: criticalFlash 0.8s infinite;
-    border: 4px solid #ef4444 !important; /* Viền đỏ dày để dễ thấy */
+    border: 4px solid #ef4444 !important; 
     transition: all 0.3s;
 }
 
-/* === 6. HIỆU ỨNG READY - GO (MỚI THÊM) === */
+
 @keyframes zoomFade {
     0% { opacity: 0; transform: scale(0.5); }
     50% { opacity: 1; transform: scale(1.2); }
@@ -75,11 +70,11 @@
     animation: zoomFade 1s ease-in-out forwards;
 }
 
-/* Màu chữ cho hiệu ứng Ready/Go */
-.text-ready { color: #f59e0b; /* Cam vàng */ }
-.text-go { color: #16a34a; /* Xanh lá */ }
 
-/* === 7. THANH CUỘN & MENU MOBILE === */
+.text-ready { color: #f59e0b;  }
+.text-go { color: #16a34a; }
+
+
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }

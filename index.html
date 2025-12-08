@@ -4,19 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QUIZ LẬP TRÌNH</title>
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS Riêng -->
-    <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col font-sans text-slate-800">
 
-    <!-- === PHẦN 1: POPUP LOGIN === -->
     <div id="loginModal" class="fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-2xl p-8 max-w-sm w-full shadow-2xl modal-animate text-center relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-purple-600"></div>
@@ -32,7 +25,6 @@
         </div>
     </div>
 
-    <!-- === PHẦN 2: HEADER & MENU === -->
     <header class="bg-blue-600 shadow-md sticky top-0 z-40">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
@@ -48,17 +40,19 @@
                 </div>    
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-            <div class="flex flex-col p-4">
-                <a href="#" class="py-2 text-gray-700 font-bold">TRANG CHỦ</a>
-                <a href="#" class="py-2 text-gray-600">TIN TỨC</a>
-                <a href="#" class="py-2 text-gray-600">VỀ CHÚNG TÔI</a>
-            </div>
-        </div>
+<div id="mobileMenu" class="hidden md:hidden bg-white border-t border-blue-700 absolute w-full left-0 z-50 shadow-lg">
+    <div class="flex flex-col p-4 space-y-2">
+        <!-- Trang Chủ (Đậm màu) -->
+        <a href="index.html" class="block py-2 px-4 text-blue-700 font-bold bg-blue-50 rounded-lg">TRANG CHỦ</a>
+        
+        <!-- Các trang khác (Nhạt màu) -->
+        <a href="tintuc.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">TIN TỨC</a>
+        <a href="diendan.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">DIỄN ĐÀN</a>
+        <a href="gioithieu.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">GIỚI THIỆU</a>
+    </div>
+</div>
     </header>
 
-    <!-- === HERO SECTION === -->
     <section class="bg-blue-600 text-white min-h-screen flex flex-col justify-center relative overflow-hidden">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
             <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
@@ -81,7 +75,6 @@
         </div>
     </section>
 
-    <!-- === MAIN CONTENT === -->
     <main class="flex-grow container mx-auto px-4 pt-16 pb-20 bg-gray-50" id="main-content">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold text-slate-800 mb-2">Khám Phá Kiến Thức</h2>
@@ -90,7 +83,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Web -->
             <div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden" onclick="openQuiz('web')">
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-400 to-red-500"></div>
                 <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition">
@@ -103,7 +95,6 @@
                 </div>
             </div>
 
-            <!-- C++ -->
             <div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden" onclick="openQuiz('cpp')">
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
                 <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition">
@@ -116,7 +107,6 @@
                 </div>
             </div>
 
-            <!-- Java -->
             <div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden" onclick="openQuiz('java')">
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-400 to-pink-500"></div>
                 <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition">
@@ -131,9 +121,7 @@
         </div>
     </main>
 
-    <!-- === GIAO DIỆN PHÒNG THI PRO (FULL SCREEN) === -->
     <div id="quizPage" class="hidden fixed inset-0 bg-slate-50 z-50 flex flex-col h-screen overflow-hidden">
-        <!-- Header: Đổi màu theo môn -->
         <header id="quizHeader" class="bg-white shadow-md px-6 py-4 flex justify-between items-center z-20 transition-colors duration-500">
             <button onclick="confirmExit()" class="text-white/90 hover:text-white transition flex items-center gap-2 bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm">
                 <i class="fa-solid fa-arrow-left"></i> <span class="hidden md:inline font-bold">Thoát</span>
@@ -151,15 +139,12 @@
             </div>
         </header>
 
-        <!-- Thanh thời gian -->
         <div class="w-full bg-gray-200 h-2">
             <div id="timeBar" class="bg-yellow-400 h-2 transition-all duration-1000 linear" style="width: 100%"></div>
         </div>
 
-        <!-- Nội dung câu hỏi -->
         <main class="flex-grow container mx-auto px-4 flex flex-col items-center justify-center relative overflow-y-auto py-8">
             <div class="w-full max-w-3xl">
-                <!-- Card Câu hỏi (Đã thêm ID="questionCard") -->
                 <div id="questionCard" class="bg-white rounded-3xl shadow-xl p-8 md:p-10 mb-8 relative overflow-hidden transform transition-all">
                     <div class="absolute -top-6 -right-6 w-24 h-24 bg-gray-100 rounded-full opacity-50"></div>
                     <h3 id="questionText" class="text-2xl md:text-3xl font-bold text-slate-800 leading-normal relative z-10">
@@ -167,12 +152,9 @@
                     </h3>
                 </div>
 
-                <!-- Các nút đáp án -->
                 <div id="answerContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- JS sẽ chèn nút vào đây -->
                 </div>
 
-                <!-- Thông báo chuyển câu -->
                 <div id="nextTimerMsg" class="text-center mt-8 h-8 transition-opacity opacity-0">
                     <span class="inline-block bg-slate-800 text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg">
                         <i class="fa-solid fa-spinner fa-spin mr-2"></i>Chuyển câu sau <span id="countdownSpan" class="text-yellow-400">2</span>s
@@ -182,7 +164,6 @@
         </main>
     </div>
 
-    <!-- === POPUP KẾT QUẢ === -->
     <div id="resultModal" class="hidden fixed inset-0 bg-slate-900/95 flex items-center justify-center z-[60] backdrop-blur-sm p-4">
         <div class="bg-white rounded-[2rem] p-8 text-center max-w-md w-full shadow-2xl modal-animate relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-blue-50 to-transparent"></div>
@@ -212,7 +193,6 @@
         </div>
     </div>
 
-    <!-- === MỚI THÊM: POPUP SẴN SÀNG === -->
     <div id="readyModal" class="hidden fixed inset-0 bg-slate-900/90 z-[70] flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl modal-animate border-4 border-white/10">
             <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
@@ -230,14 +210,12 @@
         </div>
     </div>
 
-    <!-- === MỚI THÊM: MÀN HÌNH READY/GO === -->
     <div id="readyGoOverlay" class="hidden fixed inset-0 z-[80] bg-white/95 flex items-center justify-center">
         <h1 id="readyGoText" class="text-9xl font-black text-slate-800 uppercase tracking-tighter drop-shadow-2xl">
             READY
         </h1>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-slate-900 text-white py-8 mt-12">
         <div class="container mx-auto px-4 text-center">
             <p class="text-slate-400 text-sm">&copy; 2025 QUIZ. Designed by Pham Huu Loi.</p>

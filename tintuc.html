@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tin Tức - QUIZ</title>
     
-    <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Dùng chung file CSS với trang chủ để đồng bộ hiệu ứng -->
+ 
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col font-sans text-slate-800">
 
-    <!-- === HEADER (Giống trang chủ) === -->
+
     <header class="bg-blue-600 shadow-md sticky top-0 z-40">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
-                <!-- Menu Desktop -->
+
                 <nav class="hidden md:flex space-x-6">
-                    <!-- Link về trang chủ (Bình thường) -->
+           
                     <a href="index.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">TRANG CHỦ</a>
                     
-                    <!-- Link Tin Tức (ĐANG ACTIVE -> Chữ Vàng, Nền Đậm) -->
+                  
                     <a href="tintuc.html" class="px-4 py-2 rounded-lg text-yellow-300 bg-blue-800 font-bold shadow-inner">TIN TỨC</a>
                     
                     <a href="diendan.html" class="px-4 py-2 rounded-lg text-white font-medium hover:bg-blue-800 transition">DIỄN ĐÀN</a>
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
+     
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-blue-700 absolute w-full left-0 z-50 shadow-lg">
             <div class="flex flex-col p-4 space-y-2">
                 <a href="index.html" class="block py-2 px-4 text-gray-600 hover:bg-blue-50 rounded-lg">TRANG CHỦ</a>
@@ -51,7 +51,6 @@
         </div>
     </header>
 
-    <!-- === NỘI DUNG CHÍNH (TIN TỨC) === -->
     <main class="flex-grow container mx-auto px-4 py-12 max-w-4xl">
         
         <div class="text-center mb-12">
@@ -59,17 +58,17 @@
             <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
         </div>
 
-        <!-- DANH SÁCH TIN (Dạng thẻ chữ nhật dài) -->
+
         <div class="space-y-6">
 
-            <!-- 1. Tin Thông Báo (Click hiện Popup) -->
+   
             <div onclick="document.getElementById('updateModal').classList.remove('hidden')" 
                  class="group bg-white p-6 rounded-xl shadow-md border-l-8 border-red-500 hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-6">
-                <!-- Icon -->
+               
                 <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition">
                     <i class="fa-solid fa-bullhorn text-2xl text-red-600"></i>
                 </div>
-                <!-- Nội dung -->
+            
                 <div class="flex-grow">
                     <div class="flex justify-between items-center mb-1">
                         <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded uppercase">Thông báo mới</span>
@@ -81,7 +80,6 @@
                 <div class="text-slate-300 group-hover:text-blue-600 transition"><i class="fa-solid fa-chevron-right text-xl"></i></div>
             </div>
 
-            <!-- 2. Tài liệu HTML (Link W3Schools) -->
             <a href="https://www.w3schools.com/html/" target="_blank" 
                class="group bg-white p-6 rounded-xl shadow-md border-l-8 border-orange-500 hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-6 block">
                 <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition">
@@ -95,7 +93,7 @@
                 <div class="text-slate-300 group-hover:text-orange-600 transition"><i class="fa-solid fa-external-link-alt text-xl"></i></div>
             </a>
 
-            <!-- 3. Tài liệu C++ (Link W3Schools) -->
+      
             <a href="https://www.w3schools.com/cpp/" target="_blank" 
                class="group bg-white p-6 rounded-xl shadow-md border-l-8 border-blue-600 hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-6 block">
                 <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition">
@@ -109,7 +107,7 @@
                 <div class="text-slate-300 group-hover:text-blue-600 transition"><i class="fa-solid fa-external-link-alt text-xl"></i></div>
             </a>
 
-            <!-- 4. Tài liệu Java (Link W3Schools) -->
+        
             <a href="https://www.w3schools.com/java/" target="_blank" 
                class="group bg-white p-6 rounded-xl shadow-md border-l-8 border-red-600 hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-6 block">
                 <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition">
@@ -126,7 +124,6 @@
         </div>
     </main>
 
-    <!-- === POPUP THÔNG BÁO UPDATE === -->
     <div id="updateModal" class="hidden fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm modal-animate">
         <div class="bg-white rounded-2xl p-8 max-w-sm w-full shadow-2xl relative text-center">
             <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -147,13 +144,13 @@
         </div>
     </div>
 
-    <!-- Footer -->
+
     <footer class="bg-slate-900 text-white py-8 mt-12">
         <div class="container mx-auto px-4 text-center">
   <p class="text-slate-400 text-sm">&copy; 2025 QUIZ. Designed by Pham Huu Loi.</p>        </div>
     </footer>
 
-    <!-- Script nhỏ cho menu mobile (Không cần file script.js nặng nề của trang chủ) -->
+ 
     <script>
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
